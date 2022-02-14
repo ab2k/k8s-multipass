@@ -1,5 +1,5 @@
 # [k8s](https://github.com/kubernetes/kubernetes) via [multipass](https://github.com/canonical/multipass)
-k8s multipath cloud init files
+easy local kubernetes cluster set-up via multipath and cloud init
 
 ## windows via powershell
 
