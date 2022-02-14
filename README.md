@@ -1,4 +1,4 @@
-# k8s via multipass
+# k8s via [multipass](https://github.com/canonical/multipass)
 k8s multipath cloud init files
 
 ## windows via powershell
