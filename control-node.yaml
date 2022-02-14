@@ -1,0 +1,42 @@
+bootcmd:
+- curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+- echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+growpart:
+  mode: auto
+  devices: ["/"]
+preserve_hostname: true
+prefer_fqdn_over_hostname: true
+fqdn: k8s-control
+locale: "en_US.UTF-8"
+package_update: true
+package_upgrade: true
+package_reboot_if_required: false
+preserve_sources_list: true
+manage_resolv_conf: true
+resolv_conf:
+  nameservers: ['8.8.4.4', '8.8.8.8']
+packages:
+  - containerd
+  - kubeadm=1.21.0-00
+  - kubelet=1.21.0-00
+  - kubectl=1.21.0-00
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - jq
+write_files:
+  - path: /etc/modules-load.d/containerd.conf
+    content: |
+      overlay
+      br_netfilter
+  - path: /etc/sysctl.d/99-kubernetes-cri.conf
+    content: |
+      net.ipv4.ip_forward=1
+      net.bridge.bridge-nf-call-iptables=1
+      net.bridge.bridge-nf-call-ip6tables=1
+  - path: /etc/environment
+    content: |
+      LC_ALL=en_US.UTF-8
+      LANG=en_US.UTF-8
+power_state:
+  mode: reboot
