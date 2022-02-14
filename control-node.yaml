@@ -7,7 +7,6 @@ growpart:
 fqdn: k8s-control
 preserve_hostname: true
 prefer_fqdn_over_hostname: true
-timezone: Europe/Moscow
 locale: "en_US.UTF-8"
 package_update: true
 package_upgrade: true
