@@ -1,5 +1,5 @@
 # [k8s](https://github.com/kubernetes/kubernetes) via [multipass](https://github.com/canonical/multipass)
-easy local kubernetes cluster set-up via multipath and cloud init
+easy local kubernetes cluster set-up via multipath, cloud init and kubeadm
 
 ## Windows via powershell
 
@@ -11,7 +11,7 @@ Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ab2k/k8s-m
 ```
 Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ab2k/k8s-multipass/main/worker-node-1.yaml' | Select-Object -Expand Content | multipass launch -n k8s-worker-1 --cpus 2 --mem 4G --disk 10G 18.04 --cloud-init -
 ```
-3. k8s worker node 1: 
+3. k8s worker node 2: 
 ```
 Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ab2k/k8s-multipass/main/worker-node-2.yaml' | Select-Object -Expand Content | multipass launch -n k8s-worker-1 --cpus 2 --mem 4G --disk 10G 18.04 --cloud-init -
 ```
@@ -26,7 +26,7 @@ curl https://raw.githubusercontent.com/ab2k/k8s-multipass/main/control-plane.yam
 ```
 curl https://raw.githubusercontent.com/ab2k/k8s-multipass/main/worker-node-1.yaml | multipass launch -n k8s-worker-1 --cpus 2 --mem 4G --disk 10G 18.04 --cloud-init -
 ```
-3. k8s worker node 1: 
+3. k8s worker node 2: 
 ```
 curl https://raw.githubusercontent.com/ab2k/k8s-multipass/main/worker-node-2.yaml | multipass launch -n k8s-worker-1 --cpus 2 --mem 4G --disk 10G 18.04 --cloud-init -
 ```
@@ -47,11 +47,11 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 echo 'source <(kubectl completion bash)' >>~/.bashrc
 ```
-4. add a CNI to cluster, I will use [Calico Project](https://github.com/projectcalico/calico)
+4. add a CNI to cluster, I will use [Project Calico](https://github.com/projectcalico/calico)
 ```
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 ```
-5. get join token
+5. get join token to use on worker nodes
 ```
 kubeadm token create --print-join-command
 ```
