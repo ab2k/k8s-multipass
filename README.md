@@ -1,7 +1,7 @@
 # [k8s](https://github.com/kubernetes/kubernetes) via [multipass](https://github.com/canonical/multipass)
 easy local kubernetes cluster set-up via multipath and cloud init
 
-## windows via powershell
+## Windows via powershell
 
 1. k8s control plane: 
 ```
@@ -16,7 +16,7 @@ Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ab2k/k8s-m
 Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ab2k/k8s-multipass/main/worker-node-2.yaml' | Select-Object -Expand Content | multipass launch -n k8s-worker-1 --cpus 2 --mem 4G --disk 10G 18.04 --cloud-init -
 ```
 
-## linux/mac
+## Linux/MAC
 
 1. k8s control plane: 
 ```
