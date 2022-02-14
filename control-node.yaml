@@ -7,14 +7,18 @@ growpart:
 fqdn: k8s-control
 preserve_hostname: true
 prefer_fqdn_over_hostname: true
+timezone: "Europe/Moscow"
 locale: "en_US.UTF-8"
 package_update: true
 package_upgrade: true
 preserve_sources_list: true
 package_reboot_if_required: false
-manage_resolv_conf: true
+manage-resolv-conf: true
 resolv_conf:
   nameservers: ['8.8.4.4', '8.8.8.8']
+  options:
+    rotate: true
+    timeout: 1
 packages:
   - containerd
   - kubeadm=1.21.0-00
