@@ -4,7 +4,7 @@ bootcmd:
 growpart:
   mode: auto
   devices: [ "/" ]
-fqdn: "control.k8s.local"
+fqdn: "control-plane.k8s.local"
 prefer_fqdn_over_hostname: true
 timezone: "Europe/Moscow"
 locale: "en_US.UTF-8"
@@ -16,6 +16,8 @@ manage-resolv-conf: true
 resolv_conf:
   nameservers: ['8.8.4.4', '8.8.8.8']
   domain: k8s.local
+  searchdomains:
+    - control-plane.k8s.local
   options:
     rotate: true
     timeout: 1
