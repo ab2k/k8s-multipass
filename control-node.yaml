@@ -36,7 +36,8 @@ write_files:
       net.bridge.bridge-nf-call-iptables=1
       net.bridge.bridge-nf-call-ip6tables=1
 runcmd:
-- containerd config default | tee /etc/containerd/config.toml
+- mkdir /etc/containerd
+- containerd config default > /etc/containerd/config.toml
 - systemctl enable containerd.service
 - apt-mark hold kubelet kubeadm kubectl
 power_state:
