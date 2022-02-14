@@ -1,5 +1,5 @@
-# [k8s](https://github.com/kubernetes/kubernetes) via [multipass](https://github.com/canonical/multipass)
-easy local kubernetes cluster set-up via multipass, cloud init and kubeadm
+# [k8s](https://github.com/kubernetes/kubernetes) on [multipass](https://github.com/canonical/multipass)
+easy local kubernetes cluster set-up for certification preparing via multipass, cloud init and kubeadm
 
 ## Windows via powershell
 
