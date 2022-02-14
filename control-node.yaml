@@ -1,6 +1,6 @@
 bootcmd:
 - curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-- echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+- echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 growpart:
   mode: auto
   devices: ["/"]
@@ -36,10 +36,9 @@ write_files:
       net.bridge.bridge-nf-call-iptables=1
       net.bridge.bridge-nf-call-ip6tables=1
 runcmd:
-- mkdir /etc/containerd
-- containerd config default > /etc/containerd/config.toml
-- systemctl enable containerd.service
-- apt-mark hold kubelet kubeadm kubectl
+  - mkdir /etc/containerd
+  - containerd config default > /etc/containerd/config.toml
+  - systemctl enable containerd.service
+  - apt-mark hold kubelet kubeadm kubectl
 power_state:
-  delay: now
   mode: reboot
