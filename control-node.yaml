@@ -3,9 +3,8 @@ bootcmd:
   - echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 growpart:
   mode: auto
-  devices: ["/"]
-fqdn: k8s-control
-preserve_hostname: true
+  devices: [ "/" ]
+fqdn: "control.k8s.local"
 prefer_fqdn_over_hostname: true
 timezone: "Europe/Moscow"
 locale: "en_US.UTF-8"
@@ -16,6 +15,7 @@ package_reboot_if_required: false
 manage-resolv-conf: true
 resolv_conf:
   nameservers: ['8.8.4.4', '8.8.8.8']
+  domain: k8s.local
   options:
     rotate: true
     timeout: 1
