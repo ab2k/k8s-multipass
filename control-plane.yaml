@@ -45,6 +45,8 @@ runcmd:
   - containerd config default > /etc/containerd/config.toml
   - systemctl enable containerd.service
   - apt-mark hold kubelet kubeadm kubectl
+  - swapoff -a
+  - sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 power_state:
   mode: reboot
   delay: now
