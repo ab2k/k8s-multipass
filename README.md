@@ -47,7 +47,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 echo 'source <(kubectl completion bash)' >>~/.bashrc
 ```
-4. add a CNI to cluster, I will use [Project Calico](https://github.com/projectcalico/calico)
+4. add any desirable CNI, or just use [Project Calico](https://github.com/projectcalico/calico) manifest
 ```
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 ```
@@ -56,7 +56,7 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 kubeadm token create --print-join-command
 ```
 
-## Set-up worker nodes
+## Set-up worker nodes with 10.10.10.1 as a control-plane ip 
 ```
 sudo kubeadm join ...
 ```
