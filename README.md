@@ -35,7 +35,7 @@ curl https://raw.githubusercontent.com/ab2k/k8s-multipass/main/worker-node-2.yam
 
 1. create a cluster
 ```
-sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.21.0
+sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.21.0 --apiserver-advertise-address 10.10.10.1 --control-plane-endpoint 10.10.10.1
 ```
 2. copy config to user home directory to utilize kubectl
 ```
