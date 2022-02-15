@@ -12,15 +12,6 @@ package_update: true
 package_upgrade: true
 preserve_sources_list: true
 package_reboot_if_required: false
-manage-resolv-conf: true
-resolv_conf:
-  nameservers: ['8.8.4.4', '8.8.8.8']
-  domain: k8s.local
-  searchdomains:
-    - control-plane.k8s.local
-  options:
-    rotate: true
-    timeout: 1
 packages:
   - containerd
   - kubeadm=1.21.0-00
@@ -40,6 +31,22 @@ write_files:
       net.ipv4.ip_forward=1
       net.bridge.bridge-nf-call-iptables=1
       net.bridge.bridge-nf-call-ip6tables=1
+  - path: /etc/netplan/51-cloud-init.yaml
+    content: |
+      network:
+        ethernets:
+          eth0:
+            addresses: [ 10.10.10.1/24 ]
+        version: 2
+  - path: /etc/hosts
+    content: |
+      127.0.0.1   localhost
+      10.10.10.1  control-plane.k8s.local control-plane
+      10.10.10.10 worker-node-1.k8s.local worker-node-1
+      10.10.10.20 worker-node-2.k8s.local worker-node-2
+      ::1         localhost ip6-localhost ip6-loopback
+      ff02::1     ip6-allnodes
+      ff02::2     ip6-allrouters
 runcmd:
   - mkdir /etc/containerd
   - containerd config default > /etc/containerd/config.toml
