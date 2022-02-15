@@ -9,11 +9,11 @@ Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ab2k/k8s-m
 ```
 2. k8s worker node 1: 
 ```
-Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ab2k/k8s-multipass/main/worker-node-1.yaml' | Select-Object -Expand Content | multipass launch -n k8s-worker-1 --cpus 2 --mem 4G --disk 10G 18.04 --cloud-init -
+Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ab2k/k8s-multipass/main/worker-node-1.yaml' | Select-Object -Expand Content | multipass launch -n k8s-worker-node-1 --cpus 2 --mem 4G --disk 10G 18.04 --cloud-init -
 ```
 3. k8s worker node 2: 
 ```
-Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ab2k/k8s-multipass/main/worker-node-2.yaml' | Select-Object -Expand Content | multipass launch -n k8s-worker-1 --cpus 2 --mem 4G --disk 10G 18.04 --cloud-init -
+Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ab2k/k8s-multipass/main/worker-node-2.yaml' | Select-Object -Expand Content | multipass launch -n k8s-worker-node-2 --cpus 2 --mem 4G --disk 10G 18.04 --cloud-init -
 ```
 
 ## Linux/MAC
