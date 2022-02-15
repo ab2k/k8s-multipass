@@ -12,6 +12,7 @@ package_update: true
 package_upgrade: true
 preserve_sources_list: true
 package_reboot_if_required: false
+manage_etc_hosts: false
 packages:
   - containerd
   - kubeadm=1.21.0-00
