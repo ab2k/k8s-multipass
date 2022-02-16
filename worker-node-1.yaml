@@ -1,5 +1,5 @@
 bootcmd:
-  - echo "[Resolve]\nDNS=8.8.8.8\n" > /etc/systemd/resolved.conf && systemctl restart systemd-resolved.service
+  - echo -e "[Resolve]\nDNS=8.8.8.8\n" > /etc/systemd/resolved.conf && systemctl restart systemd-resolved.service
   - curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
   - echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 growpart:
