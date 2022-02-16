@@ -7,7 +7,7 @@ growpart:
   devices: [ "/" ]
 fqdn: "control-plane.k8s.local"
 prefer_fqdn_over_hostname: true
-timezone: "Europe/Moscow"
+timezone: "Etc/UTC"
 locale: "en_US.UTF-8"
 package_update: true
 package_upgrade: true
